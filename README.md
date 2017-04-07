@@ -1,11 +1,13 @@
-# api documentation for  [express-validator (v3.1.2)](https://github.com/ctavan/express-validator)  [![npm package](https://img.shields.io/npm/v/npmdoc-express-validator.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-express-validator) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-express-validator.svg)](https://travis-ci.org/npmdoc/node-npmdoc-express-validator)
+# api documentation for  [express-validator (v3.1.3)](https://github.com/ctavan/express-validator)  [![npm package](https://img.shields.io/npm/v/npmdoc-express-validator.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-express-validator) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-express-validator.svg)](https://travis-ci.org/npmdoc/node-npmdoc-express-validator)
 #### Express middleware for the validator module.
 
 [![NPM](https://nodei.co/npm/express-validator.png?downloads=true)](https://www.npmjs.com/package/express-validator)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-express-validator/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-express-validator_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-express-validator/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-express-validator/build/screenCapture.buildNpmdoc.browser.%2Fhome%2Ftravis%2Fbuild%2Fnpmdoc%2Fnode-npmdoc-express-validator%2Ftmp%2Fbuild%2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-express-validator/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-express-validator/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-express-validator/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-express-validator/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
@@ -62,9 +64,8 @@
         "chai": "2.3.0",
         "cookie-parser": "1.4.1",
         "coveralls": "2.11.14",
+        "eslint": "^3.13.1",
         "express": "4.12.3",
-        "jscs": "1.13.1",
-        "jshint": "2.7.0",
         "mocha": "2.2.4",
         "nyc": "8.4.0",
         "supertest": "0.15.0",
@@ -72,13 +73,13 @@
     },
     "directories": {},
     "dist": {
-        "shasum": "bae23dfa11191398d5fcada3dd7c54f28428195a",
-        "tarball": "https://registry.npmjs.org/express-validator/-/express-validator-3.1.2.tgz"
+        "shasum": "5670a37921340c1e529c7b6fabc3551ee1dbcf6d",
+        "tarball": "https://registry.npmjs.org/express-validator/-/express-validator-3.1.3.tgz"
     },
     "engines": {
         "node": ">= 0.10"
     },
-    "gitHead": "54a5c4629aa4e1c37a3c635ea481a195e0f9e72d",
+    "gitHead": "b983e4f31b7d6ccccf53b1349329c9f93c84f5b0",
     "homepage": "https://github.com/ctavan/express-validator",
     "keywords": [
         "express",
@@ -113,14 +114,13 @@
         "url": "git://github.com/ctavan/express-validator.git"
     },
     "scripts": {
-        "jscs": "jscs ./test ./lib",
-        "jshint": "jshint ./test ./lib",
+        "lint": "eslint lib test",
         "report-coverage": "cat coverage/lcov.info | coveralls",
         "test": "nyc mocha && tsc",
-        "travis-build": "npm test && npm run jshint && npm run jscs"
+        "travis-build": "npm test && npm run lint"
     },
     "types": "./index.d.ts",
-    "version": "3.1.2"
+    "version": "3.1.3"
 }
 ```
 
@@ -404,12 +404,12 @@ n/a
 ```javascript
 init = function () {
   for (var name in validator) {
-  if (typeof validator[name] !== 'function' || name === 'toString' ||
-    name === 'toDate' || name === 'extend' || name === 'init' ||
-    name === 'isServerSide') {
+    if (typeof validator[name] !== 'function' || name === 'toString' ||
+      name === 'toDate' || name === 'extend' || name === 'init' ||
+      name === 'isServerSide') {
       continue;
-  }
-  validator.extend(name, validator[name]);
+    }
+    validator.extend(name, validator[name]);
   }
 }
 ```
@@ -696,7 +696,7 @@ req.sanitize('postparam').toBoolean();
 // when using generators e.g. with co-express
 req.getValidationResult().then(function(result) {
   if (!result.isEmpty()) {
-    res.send('There have been validation errors: ' + util.inspect(result.array()), 400);
+    res.status(400).send('There have been validation errors: ' + util.inspect(result.array()));
     return;
   }
   res.json({
