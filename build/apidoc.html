@@ -51,7 +51,7 @@
 
         href="https://github.com/ctavan/express-validator"
 
-    >express-validator (v3.1.2)</a>
+    >express-validator (v3.1.3)</a>
 </h1>
 <h4>Express middleware for the validator module.</h4>
 <div class="apidocSectionDiv"><a
@@ -911,12 +911,12 @@ console.log(req.body.username); // &#x27;a user&#x27;
     <ul>
     <li>description and source-code<pre class="apidocCodePre">init = function () {
   for (var name in validator) {
-  if (typeof validator[name] !== &#x27;function&#x27; || name === &#x27;toString&#x27; ||
-    name === &#x27;toDate&#x27; || name === &#x27;extend&#x27; || name === &#x27;init&#x27; ||
-    name === &#x27;isServerSide&#x27;) {
+    if (typeof validator[name] !== &#x27;function&#x27; || name === &#x27;toString&#x27; ||
+      name === &#x27;toDate&#x27; || name === &#x27;extend&#x27; || name === &#x27;init&#x27; ||
+      name === &#x27;isServerSide&#x27;) {
       continue;
-  }
-  validator.extend(name, validator[name]);
+    }
+    validator.extend(name, validator[name]);
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1249,7 +1249,7 @@ req.sanitize(&#x27;postparam&#x27;).toBoolean();
 // when using generators e.g. with co-express
 req.getValidationResult().then(function(result) {
   if (!result.<span class="apidocCodeKeywordSpan">isEmpty</span>()) {
-    res.send(&#x27;There have been validation errors: &#x27; + util.inspect(result.array()), 400);
+    res.status(400).send(&#x27;There have been validation errors: &#x27; + util.inspect(result.array()));
     return;
   }
   res.json({
