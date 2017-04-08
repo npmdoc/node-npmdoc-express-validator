@@ -1,0 +1,2038 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/ctavan/express-validator">express-validator (v3.1.3)</a>
+</h1>
+<h4>Express middleware for the validator module.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-validator">module express-validator</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-validator.</span>utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-validator.</span>validator</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-validator.utils">module express-validator.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.utils.decorateAsValidationResult">
+            function <span class="apidocSignatureSpan">express-validator.utils.</span>decorateAsValidationResult
+            <span class="apidocSignatureSpan">(obj, errors)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.utils.formatParamOutput">
+            function <span class="apidocSignatureSpan">express-validator.utils.</span>formatParamOutput
+            <span class="apidocSignatureSpan">(param)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-validator.validator">module express-validator.validator</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.blacklist">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>blacklist
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.contains">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>contains
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.equals">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>equals
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.escape">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>escape
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.extend">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>extend
+            <span class="apidocSignatureSpan">(name, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.init">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>init
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isAfter">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isAfter
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isAlpha">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isAlpha
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isAlphanumeric">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isAlphanumeric
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isAscii">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isAscii
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isBase64">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isBase64
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isBefore">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isBefore
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isBoolean">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isBoolean
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isByteLength">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isByteLength
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isCreditCard">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isCreditCard
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isCurrency">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isCurrency
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isDataURI">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isDataURI
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isDate">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isDate
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isDecimal">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isDecimal
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isDivisibleBy">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isDivisibleBy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isEmail">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isEmail
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isEmpty">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isEmpty
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isFQDN">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isFQDN
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isFloat">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isFloat
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isFullWidth">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isFullWidth
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isHalfWidth">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isHalfWidth
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isHexColor">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isHexColor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isHexadecimal">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isHexadecimal
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isIP">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isIP
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isISBN">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isISBN
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isISIN">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isISIN
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isISO8601">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isISO8601
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isISSN">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isISSN
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isIn">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isIn
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isInt">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isInt
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isJSON">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isJSON
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isLength">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isLength
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isLowercase">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isLowercase
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isMACAddress">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isMACAddress
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isMD5">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isMD5
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isMobilePhone">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isMobilePhone
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isMongoId">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isMongoId
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isMultibyte">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isMultibyte
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isNumeric">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isNumeric
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isSurrogatePair">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isSurrogatePair
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isURL">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isURL
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isUUID">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isUUID
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isUppercase">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isUppercase
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isVariableWidth">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isVariableWidth
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.isWhitelisted">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>isWhitelisted
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.ltrim">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>ltrim
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.matches">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>matches
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.normalizeEmail">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>normalizeEmail
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.rtrim">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>rtrim
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.stripLow">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>stripLow
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.toBoolean">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>toBoolean
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.toDate">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>toDate
+            <span class="apidocSignatureSpan">(date)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.toFloat">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>toFloat
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.toInt">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>toInt
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.toString">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>toString
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.trim">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>trim
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.unescape">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>unescape
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.validator.whitelist">
+            function <span class="apidocSignatureSpan">express-validator.validator.</span>whitelist
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">express-validator.validator.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-validator" id="apidoc.module.express-validator">module express-validator</a></h1>
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-validator.utils" id="apidoc.module.express-validator.utils">module express-validator.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.utils.decorateAsValidationResult" id="apidoc.element.express-validator.utils.decorateAsValidationResult">
+        function <span class="apidocSignatureSpan">express-validator.utils.</span>decorateAsValidationResult
+        <span class="apidocSignatureSpan">(obj, errors)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decorateAsValidationResult(obj, errors) {
+  var onlyFirstError = false;
+
+  obj.isEmpty = function isEmpty() {
+    return !errors.length;
+  };
+
+  obj.array = function allErrors() {
+    var used = {};
+    return !onlyFirstError ? errors : errors.filter(function(error) {
+      if (used[error.param]) {
+        return false;
+      }
+
+      used[error.param] = true;
+      return true;
+    });
+  };
+
+  obj.mapped = function mappedErrors() {
+    return errors.reduce(function(mapping, error) {
+      if (!onlyFirstError || !mapping[error.param]) {
+        mapping[error.param] = error;
+      }
+
+      return mapping;
+    }, {});
+  };
+
+  obj.useFirstErrorOnly = function useFirstErrorOnly(flag) {
+    onlyFirstError = flag === undefined || flag;
+    return obj;
+  };
+
+  obj.throw = function throwError() {
+    if (errors.length) {
+      throw decorateAsValidationResult(new Error('Validation failed'), errors);
+    }
+  };
+
+  return obj;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.utils.formatParamOutput" id="apidoc.element.express-validator.utils.formatParamOutput">
+        function <span class="apidocSignatureSpan">express-validator.utils.</span>formatParamOutput
+        <span class="apidocSignatureSpan">(param)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function formatParamOutput(param) {
+  if (Array.isArray(param)) {
+    param = param.reduce(function(prev, curr) {
+      var part = '';
+      if (validator.isInt(curr)) {
+        part = '[' + curr + ']';
+      } else {
+        if (prev) {
+          part = '.' + curr;
+        } else {
+          part = curr;
+        }
+      }
+
+      return prev + part;
+    });
+  }
+
+  return param;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-validator.validator" id="apidoc.module.express-validator.validator">module express-validator.validator</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.blacklist" id="apidoc.element.express-validator.validator.blacklist">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>blacklist
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">blacklist = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.contains" id="apidoc.element.express-validator.validator.contains">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>contains
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">contains = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+   req.check('testparam', 'Error Message').notEmpty().isInt();
+   req.check('testparam.child', 'Error Message').isInt(); // find nested params
+   req.check(['testparam', 'child'], 'Error Message').isInt(); // find nested params
+```
+
+Starts the validation of the specifed parameter, will look for the parameter in `req` in the order `params`, `query`, `body`, then
+ validate, you can use 'dot-notation' or an array to access nested values.
+
+If a validator takes in params, you would call it like `req.assert('reqParam').<span class="apidocCodeKeywordSpan">contains
+</span>('thisString');`.
+
+Validators are appended and can be chained. See [chriso/validator.js](https://github.com/chriso/validator.js) for available validators
+, or [add your own](#customvalidators).
+
+#### req.assert();
+Alias for [req.check()](#reqcheck).
+
+#### req.validate();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.equals" id="apidoc.element.express-validator.validator.equals">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>equals
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">equals = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.escape" id="apidoc.element.express-validator.validator.escape">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>escape
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">escape = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+#### req.sanitize();
+```javascript
+
+req.body.comment = 'a &lt;span&gt;comment&lt;/span&gt;';
+req.body.username = '   a user    ';
+
+req.sanitize('comment').<span class="apidocCodeKeywordSpan">escape</span>(); // returns 'a &amp;lt;span&amp;gt;
+comment&amp;lt;/span&amp;gt;'
+req.sanitize('username').trim(); // returns 'a user'
+
+console.log(req.body.comment); // 'a &amp;lt;span&amp;gt;comment&amp;lt;/span&amp;gt;'
+console.log(req.body.username); // 'a user'
+
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.extend" id="apidoc.element.express-validator.validator.extend">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>extend
+        <span class="apidocSignatureSpan">(name, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">extend = function (name, fn) {
+  validator[name] = function() {
+    var args = Array.prototype.slice.call(arguments);
+    args[0] = validator.toString(args[0]);
+    return fn.apply(validator, args);
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.init" id="apidoc.element.express-validator.validator.init">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>init
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function () {
+  for (var name in validator) {
+    if (typeof validator[name] !== 'function' || name === 'toString' ||
+      name === 'toDate' || name === 'extend' || name === 'init' ||
+      name === 'isServerSide') {
+      continue;
+    }
+    validator.extend(name, validator[name]);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isAfter" id="apidoc.element.express-validator.validator.isAfter">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isAfter
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAfter = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isAlpha" id="apidoc.element.express-validator.validator.isAlpha">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isAlpha
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAlpha = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+app.post('/:urlparam', function(req, res) {
+
+// VALIDATION
+// checkBody only checks req.body; none of the other req parameters
+// Similarly checkParams only checks in req.params (URL params) and
+// checkQuery only checks req.query (GET params).
+req.checkBody('postparam', 'Invalid postparam').notEmpty().isInt();
+req.checkParams('urlparam', 'Invalid urlparam').<span class="apidocCodeKeywordSpan">isAlpha</span>();
+req.checkQuery('getparam', 'Invalid getparam').isInt();
+
+// OR assert can be used to check on all 3 types of params.
+// req.assert('postparam', 'Invalid postparam').notEmpty().isInt();
+// req.assert('urlparam', 'Invalid urlparam').isAlpha();
+// req.assert('getparam', 'Invalid getparam').isInt();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isAlphanumeric" id="apidoc.element.express-validator.validator.isAlphanumeric">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isAlphanumeric
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAlphanumeric = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isAscii" id="apidoc.element.express-validator.validator.isAscii">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isAscii
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAscii = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isBase64" id="apidoc.element.express-validator.validator.isBase64">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isBase64
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isBase64 = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isBefore" id="apidoc.element.express-validator.validator.isBefore">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isBefore
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isBefore = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isBoolean" id="apidoc.element.express-validator.validator.isBoolean">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isBoolean
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isBoolean = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isByteLength" id="apidoc.element.express-validator.validator.isByteLength">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isByteLength
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isByteLength = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isCreditCard" id="apidoc.element.express-validator.validator.isCreditCard">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isCreditCard
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isCreditCard = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isCurrency" id="apidoc.element.express-validator.validator.isCurrency">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isCurrency
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isCurrency = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isDataURI" id="apidoc.element.express-validator.validator.isDataURI">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isDataURI
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDataURI = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isDate" id="apidoc.element.express-validator.validator.isDate">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isDate
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDate = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isDecimal" id="apidoc.element.express-validator.validator.isDecimal">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isDecimal
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDecimal = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isDivisibleBy" id="apidoc.element.express-validator.validator.isDivisibleBy">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isDivisibleBy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDivisibleBy = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+`%1` is replaced with the first parameter to the validator
+`%2` is replaced with the second parameter to the validator
+etc...
+
+Example:
+```javascript
+req.assert('number', '%0 is not an integer').isInt();
+req.assert('number', '%0 is not divisible by %1').<span class="apidocCodeKeywordSpan">isDivisibleBy</span>(5
+);
+```
+
+*Note:* string replacement does **not** work with the `.withMessage()` syntax. If you'd like to have per-validator error messages
+ with string formatting, please use the [Validation by Schema](#validation-by-schema) method instead.
+
+### Per-validation messages
+
+You can provide an error message for a single validation with `.withMessage()`. This can be chained with the rest of your validation
+, and if you don't use it for one of the validations then it will fall back to the default.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isEmail" id="apidoc.element.express-validator.validator.isEmail">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isEmail
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isEmail = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Validation result
+
+### Result API
+The method `req.getValidationResult()` returns a Promise which resolves to a result object.
+
+```js
+req.assert('email', 'required').notEmpty();
+req.assert('email', 'valid email required').<span class="apidocCodeKeywordSpan">isEmail</span>();
+req.assert('password', '6 to 20 characters required').len(6, 20);
+
+req.getValidationResult().then(function(result) {
+  // do something with the validation result
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isEmpty" id="apidoc.element.express-validator.validator.isEmpty">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isEmpty
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isEmpty = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// OR find the relevent param in all areas
+req.sanitize('postparam').toBoolean();
+
+// Alternatively use `var result = yield req.getValidationResult();`
+// when using generators e.g. with co-express
+req.getValidationResult().then(function(result) {
+  if (!result.<span class="apidocCodeKeywordSpan">isEmpty</span>()) {
+    res.status(400).send('There have been validation errors: ' + util.inspect(result.array()));
+    return;
+  }
+  res.json({
+    urlparam: req.params.urlparam,
+    getparam: req.params.getparam,
+    postparam: req.params.postparam
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isFQDN" id="apidoc.element.express-validator.validator.isFQDN">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isFQDN
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isFQDN = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isFloat" id="apidoc.element.express-validator.validator.isFloat">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isFloat
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isFloat = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isFullWidth" id="apidoc.element.express-validator.validator.isFullWidth">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isFullWidth
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isFullWidth = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isHalfWidth" id="apidoc.element.express-validator.validator.isHalfWidth">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isHalfWidth
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isHalfWidth = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isHexColor" id="apidoc.element.express-validator.validator.isHexColor">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isHexColor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isHexColor = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isHexadecimal" id="apidoc.element.express-validator.validator.isHexadecimal">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isHexadecimal
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isHexadecimal = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isIP" id="apidoc.element.express-validator.validator.isIP">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isIP
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isIP = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isISBN" id="apidoc.element.express-validator.validator.isISBN">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isISBN
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isISBN = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isISIN" id="apidoc.element.express-validator.validator.isISIN">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isISIN
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isISIN = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isISO8601" id="apidoc.element.express-validator.validator.isISO8601">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isISO8601
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isISO8601 = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isISSN" id="apidoc.element.express-validator.validator.isISSN">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isISSN
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isISSN = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isIn" id="apidoc.element.express-validator.validator.isIn">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isIn
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isIn = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isInt" id="apidoc.element.express-validator.validator.isInt">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isInt
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isInt = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+app.post('/:urlparam', function(req, res) {
+
+// VALIDATION
+// checkBody only checks req.body; none of the other req parameters
+// Similarly checkParams only checks in req.params (URL params) and
+// checkQuery only checks req.query (GET params).
+req.checkBody('postparam', 'Invalid postparam').notEmpty().<span class="apidocCodeKeywordSpan">isInt</span>();
+req.checkParams('urlparam', 'Invalid urlparam').isAlpha();
+req.checkQuery('getparam', 'Invalid getparam').isInt();
+
+// OR assert can be used to check on all 3 types of params.
+// req.assert('postparam', 'Invalid postparam').notEmpty().isInt();
+// req.assert('urlparam', 'Invalid urlparam').isAlpha();
+// req.assert('getparam', 'Invalid getparam').isInt();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isJSON" id="apidoc.element.express-validator.validator.isJSON">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isJSON
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isJSON = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isLength" id="apidoc.element.express-validator.validator.isLength">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isLength
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isLength = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isLowercase" id="apidoc.element.express-validator.validator.isLowercase">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isLowercase
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isLowercase = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isMACAddress" id="apidoc.element.express-validator.validator.isMACAddress">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isMACAddress
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isMACAddress = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isMD5" id="apidoc.element.express-validator.validator.isMD5">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isMD5
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isMD5 = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isMobilePhone" id="apidoc.element.express-validator.validator.isMobilePhone">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isMobilePhone
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isMobilePhone = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isMongoId" id="apidoc.element.express-validator.validator.isMongoId">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isMongoId
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isMongoId = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isMultibyte" id="apidoc.element.express-validator.validator.isMultibyte">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isMultibyte
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isMultibyte = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isNumeric" id="apidoc.element.express-validator.validator.isNumeric">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isNumeric
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isNumeric = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isSurrogatePair" id="apidoc.element.express-validator.validator.isSurrogatePair">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isSurrogatePair
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isSurrogatePair = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isURL" id="apidoc.element.express-validator.validator.isURL">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isURL
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isURL = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isUUID" id="apidoc.element.express-validator.validator.isUUID">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isUUID
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUUID = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isUppercase" id="apidoc.element.express-validator.validator.isUppercase">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isUppercase
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUppercase = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isVariableWidth" id="apidoc.element.express-validator.validator.isVariableWidth">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isVariableWidth
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isVariableWidth = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.isWhitelisted" id="apidoc.element.express-validator.validator.isWhitelisted">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>isWhitelisted
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isWhitelisted = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.ltrim" id="apidoc.element.express-validator.validator.ltrim">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>ltrim
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ltrim = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.matches" id="apidoc.element.express-validator.validator.matches">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>matches
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">matches = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.normalizeEmail" id="apidoc.element.express-validator.validator.normalizeEmail">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>normalizeEmail
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">normalizeEmail = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.rtrim" id="apidoc.element.express-validator.validator.rtrim">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>rtrim
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">rtrim = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.stripLow" id="apidoc.element.express-validator.validator.stripLow">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>stripLow
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stripLow = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.toBoolean" id="apidoc.element.express-validator.validator.toBoolean">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>toBoolean
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toBoolean = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// req.assert('postparam', 'Invalid postparam').notEmpty().isInt();
+// req.assert('urlparam', 'Invalid urlparam').isAlpha();
+// req.assert('getparam', 'Invalid getparam').isInt();
+
+// SANITIZATION
+// as with validation these will only validate the corresponding
+// request object
+req.sanitizeBody('postparam').<span class="apidocCodeKeywordSpan">toBoolean</span>();
+req.sanitizeParams('urlparam').toBoolean();
+req.sanitizeQuery('getparam').toBoolean();
+
+// OR find the relevent param in all areas
+req.sanitize('postparam').toBoolean();
+
+// Alternatively use `var result = yield req.getValidationResult();`
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.toDate" id="apidoc.element.express-validator.validator.toDate">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>toDate
+        <span class="apidocSignatureSpan">(date)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toDate = function (date) {
+  if (Object.prototype.toString.call(date) === '[object Date]') {
+    return date;
+  }
+  date = Date.parse(date);
+  return !isNaN(date) ? new Date(date) : null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.toFloat" id="apidoc.element.express-validator.validator.toFloat">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>toFloat
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toFloat = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.toInt" id="apidoc.element.express-validator.validator.toInt">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>toInt
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toInt = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.toString" id="apidoc.element.express-validator.validator.toString">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>toString
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (input) {
+  if (typeof input === 'object' &amp;&amp; input !== null &amp;&amp; input.toString) {
+    input = input.toString();
+  } else if (input === null || typeof input === 'undefined' || (isNaN(input) &amp;&amp; !input.length)) {
+    input = '';
+  }
+  return '' + input;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.trim" id="apidoc.element.express-validator.validator.trim">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>trim
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">trim = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+#### req.sanitize();
+```javascript
+
+req.body.comment = 'a &lt;span&gt;comment&lt;/span&gt;';
+req.body.username = '   a user    ';
+
+req.sanitize('comment').escape(); // returns 'a &amp;lt;span&amp;gt;comment&amp;lt;/span&amp;gt;'
+req.sanitize('username').<span class="apidocCodeKeywordSpan">trim</span>(); // returns 'a user'
+
+console.log(req.body.comment); // 'a &amp;lt;span&amp;gt;comment&amp;lt;/span&amp;gt;'
+console.log(req.body.username); // 'a user'
+
+```
+
+Sanitizes the specified parameter (using 'dot-notation' or array), the parameter will be updated to the sanitized result
+. Cannot be chained, and will return the result. See [chriso/validator.js](https://github.com/chriso/validator.js) for available
+ sanitizers, or [add your own](#customsanitizers).
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.unescape" id="apidoc.element.express-validator.validator.unescape">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>unescape
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unescape = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-validator.validator.whitelist" id="apidoc.element.express-validator.validator.whitelist">
+        function <span class="apidocSignatureSpan">express-validator.validator.</span>whitelist
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">whitelist = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(req.body.comment); // 'a &amp;lt;span&amp;gt;comment&amp;lt;/span&amp;gt;'
+console.log(req.body.username); // 'a user'
+
+```
+
+Sanitizes the specified parameter (using 'dot-notation' or array), the parameter will be updated to the sanitized result
+. Cannot be chained, and will return the result. See [chriso/validator.js](https://github.com/chriso/validator.js) for available
+ sanitizers, or [add your own](#customsanitizers).
+
+If a sanitizer takes in params, you would call it like `req.sanitize('reqParam').<span class="apidocCodeKeywordSpan">whitelist
+</span>(['a', 'b', 'c']);`.
+
+If the parameter is present in multiple places with the same name e.g. `req.params.comment` &amp; `req.query.comment`, they will
+ all be sanitized.
+
+#### req.filter();
+Alias for [req.sanitize()](#reqsanitize).
+
+#### req.sanitizeBody();
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
