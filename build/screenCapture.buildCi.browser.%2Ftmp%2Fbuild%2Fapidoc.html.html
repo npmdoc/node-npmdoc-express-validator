@@ -56,6 +56,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.express-validator">
+            function <span class="apidocSignatureSpan"></span>express-validator
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-validator.</span>utils</span>
 
         </li>
@@ -673,6 +682,140 @@
 <h1><a href="#apidoc.module.express-validator" id="apidoc.module.express-validator">module express-validator</a></h1>
 
 
+    <h2>
+        <a href="#apidoc.element.express-validator.express-validator" id="apidoc.element.express-validator.express-validator">
+        function <span class="apidocSignatureSpan"></span>express-validator
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">express-validator = function (options) {
+  options = options || {};
+  var defaults = {
+    customValidators: {},
+    customSanitizers: {},
+    errorFormatter: function(param, msg, value) {
+      return {
+        param: param,
+        msg: msg,
+        value: value
+      };
+    }
+  };
+
+  _.defaults(options, defaults);
+
+  // _.set validators and sanitizers as prototype methods on corresponding chains
+  _.forEach(validator, function(method, methodName) {
+    if (methodName.match(/^is/) || _.includes(additionalValidators, methodName)) {
+      ValidatorChain.prototype[methodName] = makeValidator(methodName, validator);
+    }
+
+    if (methodName.match(/^to/) || _.includes(additionalSanitizers, methodName)) {
+      Sanitizer.prototype[methodName] = makeSanitizer(methodName, validator);
+    }
+  });
+
+  ValidatorChain.prototype.notEmpty = function() {
+    return this.isLength({
+      min: 1
+    });
+  };
+
+  ValidatorChain.prototype.len = function() {
+    return this.isLength.apply(this, arguments);
+  };
+
+  ValidatorChain.prototype.optional = function(opts) {
+    opts = opts || {};
+    // By default, optional checks if the key exists, but the user can pass in
+    // checkFalsy: true to skip validation if the property is falsy
+    var defaults = {
+      checkFalsy: false
+    };
+
+    var options = _.assign(defaults, opts);
+
+    if (options.checkFalsy) {
+      if (!this.value) {
+        this.skipValidating = true;
+      }
+    } else {
+      if (this.value === undefined) {
+        this.skipValidating = true;
+      }
+    }
+
+    return this;
+  };
+
+  ValidatorChain.prototype.withMessage = function(message) {
+    if (this.lastError) {
+      if (this.lastError.isAsync) {
+        this.req._asyncValidationErrors.pop().catch(function() {
+          // Suppress errors from original promise - they should go to the new one.
+          // Otherwise bluebird throws an 'unhandled rejection' error
+        });
+        var error = formatErrors.call(this.lastError.context, this.lastError.param, message, this.lastError.value);
+        var promise = this.lastError.promise.catch(function() {
+          return Promise.reject(error);
+        });
+        this.req._asyncValidationErrors.push(promise);
+      } else {
+        this.validationErrors.pop();
+        this.req._validationErrors.pop();
+        var errorMessage = formatErrors.call(this, this.lastError.param, message, this.lastError.value);
+        this.validationErrors.push(errorMessage);
+        this.req._validationErrors.push(errorMessage);
+        this.lastError = null;
+      }
+    }
+    return this;
+  };
+
+  _.forEach(options.customValidators, function(method, customValidatorName) {
+    ValidatorChain.prototype[customValidatorName] = makeValidator(customValidatorName, options.customValidators);
+  });
+
+  _.forEach(options.customSanitizers, function(method, customSanitizerName) {
+    Sanitizer.prototype[customSanitizerName] = makeSanitizer(customSanitizerName, options.customSanitizers);
+  });
+
+  return function(req, res, next) {
+    var locations = ['body', 'params', 'query'];
+
+    req._validationErrors = [];
+    req._asyncValidationErrors = [];
+    req.validationErrors = function(mapped, promisesResolved) {
+      if (!promisesResolved &amp;&amp; req._asyncValidationErrors.length &gt; 0) {
+        console.warn('WARNING: You have asynchronous validators but you have not used asyncValidateErrors to check for errors.');
+      }
+
+      if (mapped &amp;&amp; req._validationErrors.length &gt; 0) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+
+        return errors;
+      }
+
+      return req._validationErrors.length &gt; 0 ? req._validationErrors : false;
+    };
+
+    req.asyncValidationErrors = function(mapped) {
+      return new Promise(function(resolve, reject) {
+        var promises = req._asyncValidationErrors;
+        // Migrated using the recommended fix from
+        // http://bluebirdjs.com/docs/api/reflect.html
+        Promise.all(promises.map(function(promise) {
+          // Must convert to Bluebird promise in case they are using native
+          // Node promises since ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
 
 
 
@@ -731,7 +874,23 @@
 
   return obj;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    })).then(function(results) {
+      results.forEach(function(result) {
+        if (result.isRejected()) {
+          req._validationErrors.push(result.reason());
+        }
+      });
+
+      return resolve(utils.<span class="apidocCodeKeywordSpan">decorateAsValidationResult</span>({}, req._validationErrors));
+    });
+  });
+};
+
+locations.forEach(function(location) {
+    /**
+     * @name req.sanitizeQuery
+...</pre></li>
     </ul>
 
 
@@ -763,7 +922,23 @@
 
   return param;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @method param
+ * @param  {(string|string[])} param       parameter as a string or array
+ * @param  {string} msg
+ * @param  {string} value
+ * @return {function}
+ */
+function formatErrors(param, msg, value) {
+  var formattedParam = utils.<span class="apidocCodeKeywordSpan">formatParamOutput</span>(param);
+
+  return this.errorFormatter(formattedParam, msg, value);
+}
+
+module.exports = expressValidator;
+module.exports.validator = validator;
+module.exports.utils = utils;
+...</pre></li>
     </ul>
 
 
@@ -890,7 +1065,23 @@ console.log(req.body.username); // 'a user'
     return fn.apply(validator, args);
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+validator.init = function() {
+for (var name in validator) {
+  if (typeof validator[name] !== 'function' || name === 'toString' ||
+    name === 'toDate' || name === 'extend' || name === 'init' ||
+    name === 'isServerSide') {
+    continue;
+  }
+  validator.<span class="apidocCodeKeywordSpan">extend</span>(name, validator[name]);
+}
+};
+
+validator.toString = function(input) {
+if (typeof input === 'object' &amp;&amp; input !== null &amp;&amp; input.toString) {
+  input = input.toString();
+} else if (input === null || typeof input === 'undefined' || (isNaN(input) &amp;&amp; !input.length)) {
+...</pre></li>
     </ul>
 
 
@@ -912,7 +1103,23 @@ console.log(req.body.username); // 'a user'
     validator.extend(name, validator[name]);
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var validator = require('validator');
+var _ = require('lodash');
+var Promise = require('bluebird');
+var utils = require('./utils');
+
+// When validator upgraded to v5, they removed automatic string coercion
+// The next few methods (up to validator.<span class="apidocCodeKeywordSpan">init</span>()) restores that functionality
+// so that express-validator can continue to function normally
+validator.extend = function(name, fn) {
+validator[name] = function() {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+};
+...</pre></li>
     </ul>
 
 
@@ -1520,7 +1727,23 @@ req.checkQuery('getparam', 'Invalid getparam').isInt();
   args[0] = validator.toString(args[0]);
   return fn.apply(validator, args);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  if (methodName.match(/^to/) || _.includes(additionalSanitizers, methodName)) {
+    Sanitizer.prototype[methodName] = makeSanitizer(methodName, validator);
+  }
+});
+
+ValidatorChain.prototype.notEmpty = function() {
+  return this.<span class="apidocCodeKeywordSpan">isLength</span>({
+    min: 1
+  });
+};
+
+ValidatorChain.prototype.len = function() {
+  return this.isLength.apply(this, arguments);
+};
+...</pre></li>
     </ul>
 
 
@@ -1932,7 +2155,23 @@ req.sanitize('postparam').toBoolean();
   }
   return '' + input;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// When validator upgraded to v5, they removed automatic string coercion
+// The next few methods (up to validator.init()) restores that functionality
+// so that express-validator can continue to function normally
+validator.extend = function(name, fn) {
+validator[name] = function() {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.<span class="apidocCodeKeywordSpan">toString</span>(args[0]);
+  return fn.apply(validator, args);
+};
+};
+
+validator.init = function() {
+for (var name in validator) {
+  if (typeof validator[name] !== 'function' || name === 'toString' ||
+...</pre></li>
     </ul>
 
 

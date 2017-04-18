@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.express-validator.express-validator">
+            function <span class="apidocSignatureSpan"></span>express-validator
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-validator.</span>utils</span>
 
         </li>
@@ -680,6 +689,140 @@
 <h1><a href="#apidoc.module.express-validator" id="apidoc.module.express-validator">module express-validator</a></h1>
 
 
+    <h2>
+        <a href="#apidoc.element.express-validator.express-validator" id="apidoc.element.express-validator.express-validator">
+        function <span class="apidocSignatureSpan"></span>express-validator
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">express-validator = function (options) {
+  options = options || {};
+  var defaults = {
+    customValidators: {},
+    customSanitizers: {},
+    errorFormatter: function(param, msg, value) {
+      return {
+        param: param,
+        msg: msg,
+        value: value
+      };
+    }
+  };
+
+  _.defaults(options, defaults);
+
+  // _.set validators and sanitizers as prototype methods on corresponding chains
+  _.forEach(validator, function(method, methodName) {
+    if (methodName.match(/^is/) || _.includes(additionalValidators, methodName)) {
+      ValidatorChain.prototype[methodName] = makeValidator(methodName, validator);
+    }
+
+    if (methodName.match(/^to/) || _.includes(additionalSanitizers, methodName)) {
+      Sanitizer.prototype[methodName] = makeSanitizer(methodName, validator);
+    }
+  });
+
+  ValidatorChain.prototype.notEmpty = function() {
+    return this.isLength({
+      min: 1
+    });
+  };
+
+  ValidatorChain.prototype.len = function() {
+    return this.isLength.apply(this, arguments);
+  };
+
+  ValidatorChain.prototype.optional = function(opts) {
+    opts = opts || {};
+    // By default, optional checks if the key exists, but the user can pass in
+    // checkFalsy: true to skip validation if the property is falsy
+    var defaults = {
+      checkFalsy: false
+    };
+
+    var options = _.assign(defaults, opts);
+
+    if (options.checkFalsy) {
+      if (!this.value) {
+        this.skipValidating = true;
+      }
+    } else {
+      if (this.value === undefined) {
+        this.skipValidating = true;
+      }
+    }
+
+    return this;
+  };
+
+  ValidatorChain.prototype.withMessage = function(message) {
+    if (this.lastError) {
+      if (this.lastError.isAsync) {
+        this.req._asyncValidationErrors.pop().catch(function() {
+          // Suppress errors from original promise - they should go to the new one.
+          // Otherwise bluebird throws an &#x27;unhandled rejection&#x27; error
+        });
+        var error = formatErrors.call(this.lastError.context, this.lastError.param, message, this.lastError.value);
+        var promise = this.lastError.promise.catch(function() {
+          return Promise.reject(error);
+        });
+        this.req._asyncValidationErrors.push(promise);
+      } else {
+        this.validationErrors.pop();
+        this.req._validationErrors.pop();
+        var errorMessage = formatErrors.call(this, this.lastError.param, message, this.lastError.value);
+        this.validationErrors.push(errorMessage);
+        this.req._validationErrors.push(errorMessage);
+        this.lastError = null;
+      }
+    }
+    return this;
+  };
+
+  _.forEach(options.customValidators, function(method, customValidatorName) {
+    ValidatorChain.prototype[customValidatorName] = makeValidator(customValidatorName, options.customValidators);
+  });
+
+  _.forEach(options.customSanitizers, function(method, customSanitizerName) {
+    Sanitizer.prototype[customSanitizerName] = makeSanitizer(customSanitizerName, options.customSanitizers);
+  });
+
+  return function(req, res, next) {
+    var locations = [&#x27;body&#x27;, &#x27;params&#x27;, &#x27;query&#x27;];
+
+    req._validationErrors = [];
+    req._asyncValidationErrors = [];
+    req.validationErrors = function(mapped, promisesResolved) {
+      if (!promisesResolved &#x26;&#x26; req._asyncValidationErrors.length &#x3e; 0) {
+        console.warn(&#x27;WARNING: You have asynchronous validators but you have not used asyncValidateErrors to check for errors.&#x27;);
+      }
+
+      if (mapped &#x26;&#x26; req._validationErrors.length &#x3e; 0) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+
+        return errors;
+      }
+
+      return req._validationErrors.length &#x3e; 0 ? req._validationErrors : false;
+    };
+
+    req.asyncValidationErrors = function(mapped) {
+      return new Promise(function(resolve, reject) {
+        var promises = req._asyncValidationErrors;
+        // Migrated using the recommended fix from
+        // http://bluebirdjs.com/docs/api/reflect.html
+        Promise.all(promises.map(function(promise) {
+          // Must convert to Bluebird promise in case they are using native
+          // Node promises since ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
 
 
 
@@ -738,7 +881,23 @@
 
   return obj;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    })).then(function(results) {
+      results.forEach(function(result) {
+        if (result.isRejected()) {
+          req._validationErrors.push(result.reason());
+        }
+      });
+
+      return resolve(utils.<span class="apidocCodeKeywordSpan">decorateAsValidationResult</span>({}, req._validationErrors));
+    });
+  });
+};
+
+locations.forEach(function(location) {
+    /**
+     * @name req.sanitizeQuery
+...</pre></li>
     </ul>
 
 
@@ -770,7 +929,23 @@
 
   return param;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @method param
+ * @param  {(string|string[])} param       parameter as a string or array
+ * @param  {string} msg
+ * @param  {string} value
+ * @return {function}
+ */
+function formatErrors(param, msg, value) {
+  var formattedParam = utils.<span class="apidocCodeKeywordSpan">formatParamOutput</span>(param);
+
+  return this.errorFormatter(formattedParam, msg, value);
+}
+
+module.exports = expressValidator;
+module.exports.validator = validator;
+module.exports.utils = utils;
+...</pre></li>
     </ul>
 
 
@@ -897,7 +1072,23 @@ console.log(req.body.username); // &#x27;a user&#x27;
     return fn.apply(validator, args);
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+validator.init = function() {
+for (var name in validator) {
+  if (typeof validator[name] !== &#x27;function&#x27; || name === &#x27;toString&#x27; ||
+    name === &#x27;toDate&#x27; || name === &#x27;extend&#x27; || name === &#x27;init&#x27; ||
+    name === &#x27;isServerSide&#x27;) {
+    continue;
+  }
+  validator.<span class="apidocCodeKeywordSpan">extend</span>(name, validator[name]);
+}
+};
+
+validator.toString = function(input) {
+if (typeof input === &#x27;object&#x27; &#x26;&#x26; input !== null &#x26;&#x26; input.toString) {
+  input = input.toString();
+} else if (input === null || typeof input === &#x27;undefined&#x27; || (isNaN(input) &#x26;&#x26; !input.length)) {
+...</pre></li>
     </ul>
 
 
@@ -919,7 +1110,23 @@ console.log(req.body.username); // &#x27;a user&#x27;
     validator.extend(name, validator[name]);
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var validator = require(&#x27;validator&#x27;);
+var _ = require(&#x27;lodash&#x27;);
+var Promise = require(&#x27;bluebird&#x27;);
+var utils = require(&#x27;./utils&#x27;);
+
+// When validator upgraded to v5, they removed automatic string coercion
+// The next few methods (up to validator.<span class="apidocCodeKeywordSpan">init</span>()) restores that functionality
+// so that express-validator can continue to function normally
+validator.extend = function(name, fn) {
+validator[name] = function() {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.toString(args[0]);
+  return fn.apply(validator, args);
+};
+...</pre></li>
     </ul>
 
 
@@ -1527,7 +1734,23 @@ req.checkQuery(&#x27;getparam&#x27;, &#x27;Invalid getparam&#x27;).isInt();
   args[0] = validator.toString(args[0]);
   return fn.apply(validator, args);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  if (methodName.match(/^to/) || _.includes(additionalSanitizers, methodName)) {
+    Sanitizer.prototype[methodName] = makeSanitizer(methodName, validator);
+  }
+});
+
+ValidatorChain.prototype.notEmpty = function() {
+  return this.<span class="apidocCodeKeywordSpan">isLength</span>({
+    min: 1
+  });
+};
+
+ValidatorChain.prototype.len = function() {
+  return this.isLength.apply(this, arguments);
+};
+...</pre></li>
     </ul>
 
 
@@ -1939,7 +2162,23 @@ req.sanitize(&#x27;postparam&#x27;).toBoolean();
   }
   return &#x27;&#x27; + input;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// When validator upgraded to v5, they removed automatic string coercion
+// The next few methods (up to validator.init()) restores that functionality
+// so that express-validator can continue to function normally
+validator.extend = function(name, fn) {
+validator[name] = function() {
+  var args = Array.prototype.slice.call(arguments);
+  args[0] = validator.<span class="apidocCodeKeywordSpan">toString</span>(args[0]);
+  return fn.apply(validator, args);
+};
+};
+
+validator.init = function() {
+for (var name in validator) {
+  if (typeof validator[name] !== &#x27;function&#x27; || name === &#x27;toString&#x27; ||
+...</pre></li>
     </ul>
 
 
