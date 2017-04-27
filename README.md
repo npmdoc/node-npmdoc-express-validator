@@ -1,6 +1,6 @@
 # npmdoc-express-validator
 
-#### api documentation for  [express-validator (v3.1.3)](https://github.com/ctavan/express-validator)  [![npm package](https://img.shields.io/npm/v/npmdoc-express-validator.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-express-validator) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-express-validator.svg)](https://travis-ci.org/npmdoc/node-npmdoc-express-validator)
+#### basic api documentation for  [express-validator (v3.2.0)](https://github.com/ctavan/express-validator)  [![npm package](https://img.shields.io/npm/v/npmdoc-express-validator.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-express-validator) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-express-validator.svg)](https://travis-ci.org/npmdoc/node-npmdoc-express-validator)
 
 #### Express middleware for the validator module.
 
@@ -72,13 +72,13 @@
     },
     "directories": {},
     "dist": {
-        "shasum": "5670a37921340c1e529c7b6fabc3551ee1dbcf6d",
-        "tarball": "https://registry.npmjs.org/express-validator/-/express-validator-3.1.3.tgz"
+        "shasum": "9537abeb0f66e439f9e30b4ed16c4c6c231318e2",
+        "tarball": "https://registry.npmjs.org/express-validator/-/express-validator-3.2.0.tgz"
     },
     "engines": {
         "node": ">= 0.10"
     },
-    "gitHead": "b983e4f31b7d6ccccf53b1349329c9f93c84f5b0",
+    "gitHead": "153de3209212ffae246377e1a4e046a5729b0b41",
     "homepage": "https://github.com/ctavan/express-validator",
     "keywords": [
         "express",
@@ -115,7 +115,8 @@
         "travis-build": "npm test && npm run lint"
     },
     "types": "./index.d.ts",
-    "version": "3.1.3"
+    "version": "3.2.0",
+    "bin": {}
 }
 ```
 
