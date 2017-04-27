@@ -1,18 +1,15 @@
-<svg height="238" width="720" xmlns="http://www.w3.org/2000/svg">
-<rect height="238" fill="#555" width="720"></rect>
+<svg height="190" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="190" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  0.  2017-04-18 16:20:25 +0000    89162 bytes  .</tspan>
-<tspan x="10" y="42">  1.  2017-04-18 16:20:25 +0000     1489 bytes  CONTRIBUTING.md</tspan>
-<tspan x="10" y="58">  2.  2017-04-18 16:20:25 +0000     1100 bytes  LICENSE</tspan>
-<tspan x="10" y="74">  3.  2017-04-18 16:20:25 +0000    17960 bytes  README.md</tspan>
-<tspan x="10" y="90">  4.  2017-04-18 16:20:25 +0000    19355 bytes  build/lib/express_validator.js</tspan>
-<tspan x="10" y="106">  5.  2017-04-18 16:20:25 +0000     1889 bytes  build/lib/utils.js</tspan>
-<tspan x="10" y="122">  6.  2017-04-18 16:20:25 +0000     6744 bytes  build/typeDefinitionTest.js</tspan>
-<tspan x="10" y="138">  7.  2017-04-18 16:20:25 +0000    17850 bytes  index.d.ts</tspan>
-<tspan x="10" y="154">  8.  2017-04-18 16:20:25 +0000       56 bytes  index.js</tspan>
-<tspan x="10" y="170">  9.  2017-04-18 16:20:25 +0000    16857 bytes  lib/express_validator.js</tspan>
-<tspan x="10" y="186"> 10.  2017-04-18 16:20:25 +0000     1656 bytes  lib/utils.js</tspan>
-<tspan x="10" y="202"> 11.  2017-04-18 16:20:25 +0000     3725 bytes  package.json</tspan>
-<tspan x="10" y="218"> 12.  2017-04-18 16:20:25 +0000      481 bytes  tsconfig.json</tspan>
+<tspan x="10" y="26">  0.  2017-04-27 19:11:22 +0000    61398 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-27 19:11:22 +0000     1489 bytes  CONTRIBUTING.md</tspan>
+<tspan x="10" y="58">  2.  2017-04-27 19:11:22 +0000     1100 bytes  LICENSE</tspan>
+<tspan x="10" y="74">  3.  2017-04-27 19:11:22 +0000    17960 bytes  README.md</tspan>
+<tspan x="10" y="90">  4.  2017-04-27 19:11:22 +0000    17850 bytes  index.d.ts</tspan>
+<tspan x="10" y="106">  5.  2017-04-27 19:11:22 +0000       56 bytes  index.js</tspan>
+<tspan x="10" y="122">  6.  2017-04-27 19:11:22 +0000    17079 bytes  lib/express_validator.js</tspan>
+<tspan x="10" y="138">  7.  2017-04-27 19:11:22 +0000     1656 bytes  lib/utils.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-27 19:11:22 +0000     3727 bytes  package.json</tspan>
+<tspan x="10" y="170">  9.  2017-04-27 19:11:22 +0000      481 bytes  tsconfig.json</tspan>
 </text>
 </svg>
